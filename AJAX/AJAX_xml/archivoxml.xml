@@ -1,0 +1,46 @@
+<empresa>
+    <concesionario nombre="concesionarioPepe">
+        <coche combustible="D">
+            <marca>Volkswagen</marca>
+            <modelo>Passat</modelo>
+            <color>Azul</color>
+            <anio>2005</anio>
+            <precio>7900</precio>
+            <estado>Segunda Mano</estado>
+        </coche>
+        <coche combustible="G">
+            <marca>Volkswagen</marca>
+            <modelo>Touran</modelo>
+            <color>Azul</color>
+            <anio>2017</anio>
+            <precio>8200</precio>
+            <estado>Segunda Mano</estado>
+        </coche>
+        <coche combustible="D">
+            <marca>opel</marca>
+            <modelo>Astra</modelo>
+            <color>Negro</color>
+            <anio>2013</anio>
+            <precio>8490</precio>
+            <estado>Segunda Mano</estado>
+        </coche>
+    </concesionario>
+    <concesionario nombre="ConcesionarioMaruchi">
+        <coche>
+            <marca>Audi</marca>
+            <modelo>A3 Sport</modelo>
+            <color>Rojo</color>
+            <anio>2023</anio>
+            <precio>30000</precio>
+            <estado>Nuevo</estado>
+        </coche>
+        <coche>
+            <marca>Audi</marca>
+            <modelo>A6</modelo>
+            <color>Negro</color>
+            <anio>2023</anio>
+            <precio>Nuevo</precio>
+            <estado>50000</estado>
+        </coche>
+    </concesionario>
+</empresa>

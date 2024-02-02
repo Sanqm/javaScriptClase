@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivina el Número</title>
+
+    <script>
+        function getRandom(min, max){
+            min = 1;
+            max = 15; 
+            aleatorio =  Math.floor(Math.random()* (max -min) + min);
+            var numUsuario = document.getElementById("number").value;
+            acierto = 0;
+            fallo = 0;
+            if(numUsuario == aleatorio ){
+                acierto++;
+                document.write("Acertaste");
+
+            }else{
+                fallo++;
+                document.write("Fallaste <br>");
+                document.write("Numero de fallos: " + fallo);
+            }
+          
+            document.write("<br>El numero a adivinar era: " + aleatorio);
+
+        }
+
+    </script>
+
+
+</head>
+<body>
+    <label id="nameNumber">Introduzca el número a adivinar:
+        <br><br>
+    <input type="text"  id="number" for="nameNumber" placeholder="Entre 1-15">
+    <button id="probar" onclick="getRandom(1,15)">Adivinar</button>
+
+</body>
+</html>

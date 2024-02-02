@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio Mezclar listas</title>
+
+    <script>
+      /*Esta función comprobara que el forumario este correctamente  cubierto y mezclara las dos listas de números*/
+      function mezclar() {
+        event.preventDefault(); // para que el formulario no se envie 
+        let list1 = document.getElementById("texL1").value.split(","); // recogemos los valores en la lista1
+        let list2 = document.getElementById("texL2").value.split(","); // recogemos los valores en la lista 2
+        let elm1 = document.getElementById("elemL1").value; // comprobamos indicide del selector 1
+        let elm2 = document.getElementById("elemL2").value; // // comprobamos indicide del selector 2
+        var final = []; //almacena el cascho sobrante de las dos listas si el númers de elemento no es el mismo 
+        var mezcla = []; // almacena la mezcla de las listas
+
+        if (list1.length == elm1 && list2.length == elm2) { // comprobamos si el formulario ha sido cubierto de manera correcta
+
+          // la dinamica es igual si la lista es mayor o menor o a la inversa recorremos el bucle mezclando y añadiendo la parte sobrate 
+          if (elm1 > elm2) {
+            for (let i = 0; i < list2.length; i++) {
+              mezcla.push(list1[i]);
+              mezcla.push(list2[i]);
+            }
+            final = list1.splice(elm2); // metemos sobrante de la lista 1 a partir del indice menor 
+            mezcla.push(final);
+          } else if (elm2 > elm1) {
+            for (let i = 0; i < list1.length; i++) {
+              mezcla.push(list2[i]);
+              mezcla.push(list1[i]);
+            }
+            final = list2.splice(elm1); //metemos sobrante de la lista 2 a partir del indice menor 
+            mezcla.push(final);
+          } else {
+            // este bucle al ser de la misma longitud no es necesario almacenar los sobrantes
+            for (let i = 0; i < list1.length; i++) {
+              mezcla.push(list2[i]);
+              mezcla.push(list1[i]);
+            }
+          }
+
+          document.getElementById("resultado").innerHTML = mezcla.join(","); // mostramos la lista mezclada 
+        } else { // si no emitimos una alerta 
+          alert("Revise formulario");
+        }
+      }
+
+      function reinciar() {
+        var formulario = document.getElementById("formMezcla");
+        formulario.reset();
+      }
+    </script>
+  </head>
+  <body>
+    <form id="formMezcla">
+      <p id="pLista1">
+        <label for="texL1">Primera Lista:</label><br />
+        <input
+          type="text"
+          id="texL1"
+          placeholder="Máximo 5 dígitos, por comas"
+        />
+        <select name="selecL1" id="elemL1">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </p>
+
+      <p id="pLista2">
+        <label for="texL2">Segunda Lista:</label> <br />
+        <input
+          type="text"
+          id="texL2"
+          placeholder="Máximo 5 dígitos, por comas"
+        />
+        <select name="selecL2" id="elemL2">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </p>
+
+      <p id="botones">
+        <button id="enviar" onclick="mezclar()">Enviar</button>
+        <button id="reiniciar" onclick="">Reiniciar</button>
+      </p>
+
+      <p id="resultado"></p>
+    </form>
+  </body>
+</html>

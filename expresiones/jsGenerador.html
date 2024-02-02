@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generar Texto</title>
+  </head>
+  <body>
+    <p id="ptxt"></p>
+    <p id="vAna"></p>
+    <p id="vRoi"></p>
+    <p id="vEva"></p>
+  </body>
+  <script>
+    const CADENA = "anaroieva0123456789 ";  // cadena con la que generamos el texto, 
+    //dejamos la a repetia para poder aumentar la probabilidad de que se generen los nombres que queremos 
+    const LONG = CADENA.length; //creamos constante con la longitudud de la cedena
+    const NUMB = 2500; // cremos constante con la cantiad de caracteres que se van a generar
+    const PAT1 = 'ana'; // creamos tres constantes con los patrones de búsqueda
+    const PAT2 = 'roi';
+    const PAT3 = 'eva';
+    let resultado = ""; // alamacenará el texto generado 
+    let i = 0; // variable creada pr el sistema que formará parte de los bucle for
+    let nAnas =[];nRoi=[]; nEva= []; // arrays que almacenarán las posiciones donde aparece 
+    let rsAna ="";rRoi= "";rEva= ""; // variables que alamacenarán las posiciones en formato para mostrar  
+    do {
+      resultado = resultado + CADENA.charAt(Math.floor(Math.random() * LONG));
+      i++;
+    } while (i <= NUMB);
+    //document.getElementById("ptxt").innerHTML = resultado; // texto generado 
+
+    // en este bucle reemplazamos los patrones de busqueda por los indicados 
+    do{
+    nAnas.push(resultado.search(PAT1));
+    resultado = resultado.replace(PAT1,'<span style="color:red;"><b>A-N-A</b></span>');
+    nRoi.push(resultado.search(PAT2));
+    resultado = resultado.replace(PAT2,'<span style="color:blue;"><b>R-O-I</b></span>');
+    nEva.push(resultado.search(PAT3));
+    resultado = resultado.replace(PAT3,'<span style="color:orange;"><b>E-V-A</b></span>');    
+    }while(resultado.match(PAT1) || resultado.match(PAT2) || resultado.match(PAT3));
+    // esto lo hará mientras sigan apareciendo los aptrones
+
+
+    // con los siguientes bucles metemos en la variable para mostrar  las posiciones 
+    for (let i = 0; i < nAnas.length; i++) {  
+        if (nAnas[i]==-1) {
+            rsAna +="";    
+        }else{
+            rsAna +=nAnas[i]+ ";";
+        }
+            
+    }
+    for (let i = 0; i < nRoi.length; i++) {
+        if (nRoi[i]==-1) {
+            rRoi += "";  
+        }else{
+            rRoi +=nRoi[i]+ ";";
+        }            
+    }
+    for (let i = 0; i < nEva.length; i++) {
+        if (nEva[i]==-1) {
+            rEva+= "";            
+        }else{
+            rEva +=nEva[i]+ ";";
+        }
+            
+    }
+    // mostramos el texto modificado  con las posiciones
+    document.getElementById("ptxt").innerHTML = resultado;
+    document.getElementById("vAna").innerHTML = "Posiciones en  que aparece Ana: <br>" +rsAna;
+    document.getElementById("vRoi").innerHTML = "Posiciones en  que aparece Roi: <br>" +rRoi;
+    document.getElementById("vEva").innerHTML = "Posiciones en  que aparece Eva: <br>" +rEva;
+  </script>
+  <style col></style>
+</html>

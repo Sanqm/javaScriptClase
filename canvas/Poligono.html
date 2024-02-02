@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags for character set, compatibility, and viewport settings -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- SVG container with an empty polygon -->
+    <svg id="svgContainer" height="200" width="250">
+        <polygon id="poligono" style="fill:pink; stroke:hotpink; stroke-width:1;"></polygon>
+    </svg>
+</body>
+<script>
+    // define algunas variables necesarias
+    var cx = 125;   // coordenada x del centro
+    var cy = 100;   // coordenada y del centro
+    var r = 70;     // radio del círculo que circunscribe el polígono
+    var lados = 8;  // número de lados del polígono
+
+    // la función points
+    function points(cx, cy, r, lados) {
+        var a = 360 / lados;  // ángulo entre cada punto
+        // inicia la variable points
+        var points = (cx + r) + "," + cy + " ";
+        // calcula el resto de los puntos
+        for (var i = 1; i <= lados; i++) {
+            var aRad = (Math.PI / 180) * (a * i);
+            Xp = cx + r * Math.cos(aRad);
+            Yp = cy + r * Math.sin(aRad);
+            points += Xp + "," + Yp + " ";
+        }
+        // devuelve la variable points
+        return points;
+    }
+
+
+    /**
+     * La función points calcula las coordenadas de los puntos que formarán el polígono. 
+     * Utiliza un bucle para calcular las coordenadas (Xp e Yp) de cada punto en función del ángulo (aRad) y las agrega a la cadena points.
+     * La variable points es una cadena de coordenadas que representa los puntos del polígono en el formato requerido por el atributo points del elemento <polygon>.
+     **/
+
+
+    // busca el elemento #poligono
+    var poligono = document.getElementById("poligono");
+    // modifica el valor del atributo points utilizando la función points.
+    poligono.setAttribute("points", points(cx, cy, r, lados));
+
+</script>
+
+</html>

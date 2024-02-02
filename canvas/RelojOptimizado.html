@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body onload="calcularPuntos(); dibujarReloj(); setInterval(moverAgujas, 1000)">
+    <canvas id="myCanvas" width="700px" height="700px"></canvas>
+</body>
+<script>
+    var puntosCalculados = [];
+    var radioCircunferencia = 300;
+    var puntos = 12;
+    const ANGULOSCIRCULO = 360;
+    const GRADOANGULO = ANGULOSCIRCULO / puntos;
+    var gradosAngulo = GRADOANGULO;
+    var indexTempo = 0;
+    const GROSOR = 5;
+
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    var heightCanvas = canvas.height
+    var widthCanvas = canvas.width;
+    var punto0Y = (heightCanvas / 2) - canvas.getBoundingClientRect().top;
+    var punto0X = (widthCanvas / 2) - canvas.getBoundingClientRect().left;
+
+    //Se ejecuta tras cargar el body
+    function calcularPuntos() {
+        //Ponemos los puntos
+        while (gradosAngulo <= ANGULOSCIRCULO) {
+            let x = Math.floor(punto0Y + (radioCircunferencia * Math.sin((gradosAngulo * Math.PI) / 180)));
+            let y = Math.floor(punto0X - (radioCircunferencia * Math.cos((gradosAngulo * Math.PI) / 180)));
+            //x, y en sentido de las agujas del reloj
+            //y, x en sentido contrario a las agujas del reloj
+
+            //Procedemos a rellenar el array de puntos para las lineas
+            //Inicializamos el array cada vez, solo es un array para las
+            //coordenadas del punto
+            coordenadas = [];
+            coordenadas.push(x);
+            coordenadas.push(y);
+            puntosCalculados.push(coordenadas);
+
+
+            gradosAngulo += GRADOANGULO;
+        }
+    }
+
+    //Se ejecuta tras cargar el body
+    function dibujarReloj() {
+        if (canvas.getContext) {
+            //Dibujamos las horas
+            dibujarPuntos();
+            //Dibujamos la primera linea
+            ctx.beginPath();
+            ctx.strokeStyle = "red";
+            ctx.lineWidth = GROSOR;
+            //La linea nace en el punto central
+            ctx.moveTo(punto0X, punto0Y);
+            //La linea sigue todo el punto una distancia igual al radio
+            ctx.lineTo(punto0X, (punto0Y - radioCircunferencia));
+            ctx.stroke();
+        }
+    }
+
+    //Dibuja los puntos del reloj
+    function dibujarPuntos() {
+        if (canvas.getContext) {
+            //Dibujamos las horas
+            for (let i = 0; i < puntosCalculados.length; i++) {
+                ctx.fillRect(puntosCalculados[i][0], puntosCalculados[i][1], GROSOR, GROSOR);
+            }
+        }
+    }
+
+    function moverAgujas() {
+        if (canvas.getContext) {
+            ctx.clearRect(0, 0, widthCanvas, heightCanvas);
+            dibujarPuntos();
+            ctx.beginPath();
+            //La linea nace en el punto central
+            ctx.moveTo(punto0X, punto0Y);
+            //La linea sigue todo el punto una distancia igual al radio
+            ctx.lineTo(puntosCalculados[indexTempo][0], puntosCalculados[indexTempo][1]);
+            ctx.stroke();
+            indexTempo++;
+
+            if (indexTempo >= puntosCalculados.length) {
+                indexTempo = 0;
+            }
+
+        }
+
+    }
+</script>
+
+</html>

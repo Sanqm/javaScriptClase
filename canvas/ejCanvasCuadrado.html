@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dibujar Cuadrado</title>
+    <style>
+        canvas {
+            border: solid 2px black;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+
+    <script>
+        const c = document.getElementById("myCanvas");
+        const ctx = c.getContext("2d");
+        /*primer lado */
+        ctx.beginPath(); // iniciamos ruta
+        ctx.moveTo(20,50); // incio de ruta; mueve le punto a las cordenas indicadas
+        ctx.lineTo(100, 50); // generamos línea que irá hasta posición indicada
+        /*ctx.stroke() no es necesario ya lo dibujaremos al final*/
+        /*segundo lado */
+        ctx.lineTo(100, 150);
+        /*tercer lado*/
+        ctx.lineTo(20, 150);
+        /*cuarto lado*/
+        ctx.closePath(); /*devuelve la linea al punto inicial defindo en moveTo*/
+        ctx.stroke();
+        ctx.fillStyle = 'pink'; // damos un color de fondo
+        ctx.fill(); // lo rellenamos con ese color 
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        p{
+            
+        }
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reloj</title>
+    <script>
+        const r = 50;
+        function marco() {
+            const c = document.getElementById('reloj');
+            if (c.getContext) {
+                const ctx = c.getContext('2d');
+                ctx.fillStyle = "black";
+                ctx.fillRect(300, 300, 5, 5);
+
+                var x0 =Math.floor(r * Math.cos(30*Math.PI/180)) ; // el radio mas el pnto medio 
+                var y0 =Math.floor(r * Math.sin(30*Math.PI/180));
+                console.log(y0);
+                console.log(x0);
+
+                ctx.fillStyle = "green"; // 12
+                ctx.fillRect(300,250, 5, 5); 
+                ctx.fillStyle = "red"; //3
+                ctx.fillRect(350, 300, 5, 5);
+                ctx.fillStyle = "blue"; //6
+                ctx.fillRect(300, 350, 5, 5);
+                ctx.fillStyle = "yellow"; //9
+                ctx.fillRect(250, 300, 5, 5);
+/////////////////////////////////////////////////////////////
+
+                ctx.fillStyle = "pink"; //2
+                ctx.fillRect(x0,y0, 5, 5);
+
+                ctx.fillStyle = "lightblue"; //7
+                ctx.fillRect(y0,x0, 5, 5);
+                
+                ctx.fillStyle = "lightgreen"; //4
+                ctx.fillRect(x0,y0+50, 5, 5);
+
+                ctx.fillStyle = "purple"; //10
+                ctx.fillRect(x0-(x0-250),y0, 5, 5);
+
+
+            }
+        }
+
+        function reloj(){
+            
+        }
+
+
+    </script>
+</head>
+
+<body onload="marco()">
+    <canvas id="reloj" width="600" height="600" style="border: solid 1px black;"></canvas>
+</body>
+
+</html>

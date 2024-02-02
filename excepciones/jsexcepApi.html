@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ex Api</title>
+  </head>
+  <body>
+    <p id="pMsg"></p>
+    <input type="text" id="num1" />
+    <input type="text" id="num2" />
+    <button type="submit" id="txt" onclick="validar()">comprobar</button>
+    <script>
+      
+
+      function validar() {
+        var n1 = document.getElementById("num1").value;
+        var n2 = document.getElementById("num2").value;
+        try {
+          if (isNaN(n1, n2))
+            throw "Alguno de los valores introducidos no es un número";
+          if ((n1 + n2) / 5) throw "No es multiplo de 5";
+        } catch (e) {
+          document.write(e.message);
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos</title>
+</head>
+<body id="cuerpo" onfullcreen="pantallaCompleta()">
+    <!--dbclick: Evento que controla que se realice doble click-->
+    <label for=""><h3>Dblclick</h3></label><br><br>
+    <button id="btnDoubleClick" ondblclick="doubleClick()" onblur="">Doble Click para cambiar Fondo</button>
+    <script>
+        /* está función modifica el color de fondo del boy al hacer dobleclick sobre 
+        el botón*/
+        function doubleClick(){
+            document.body.style.backgroundColor= "#ff33f3";
+        }
+        document.body.addEventListener("dblclick",doubleClick,true);
+    </script>
+    <br><br><hr><br><br>
+    <label for=""><h3>Focus</h3></label>
+    <input type="text" id="prueba" onfocus="elmFocus()" onblur="elmBlur()"> 
+    <button>otro elemento</button>
+    <script>
+        // esta función modifica el valor del input en función de si se encuetra focalizado o no.
+        function elmFocus(){
+            document.getElementById('prueba').value="Focus";
+        }
+        function elmBlur(){
+            document.getElementById('prueba').value="NoFocus";
+        }
+    </script>
+    <br><br><hr><br><br>
+    <label for=""><h3>Fullscreen</h3></label>
+    <script>
+        /*isto non vai */
+        document.body.addEventListener("fullscreen", pantallaCompleta);
+    
+        function pantallaCompleta(){
+            document.body.style.background= "gatito.jpg";
+        }
+    </script>
+    <br><br><hr><br><br>
+    <label for=""><h3>Drag</h3></label>
+    <img src="gatito.jpg" width="300" height="250" alt="esto es una imagen de un gatito" ondragover="arrastrar()">
+    <script>
+        // esta función emite un mensaje cuando se intenta arrastrar un elemento
+        function arrastrar(){
+            alert("Prohibido arrastar");
+        }
+    </script>
+    <br><br><hr><br><br>
+    <label for="">Scroll</label>
+    <div onmousewheel="arrastrar()">
+        <img src="gatito.jpg" alt="foto">
+    </div>
+</body>
+</html>

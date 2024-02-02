@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Áreas</title>
+    <script>
+        function cuadrado() {
+            l = 5;
+            cArea = l * l;
+            document.getElementById("cuadrado").innerHTML = cArea;
+        };
+
+        function triangulo() {
+            b = 3;
+            h = 8;
+            tArea = b * h /2;
+            document.getElementById("trian").innerHTML = tArea;
+        };
+
+        function circulo() {
+            r = 6;
+            const PI = Math.PI;
+            cArea = PI * Math.pow(r,2);
+            document.getElementById("circulo").innerHTML = cArea;
+        };
+
+        function paralelepipedo(){
+            a = 5;
+            b = 6;
+            c = 7;
+            pArea = 2*(a*b+a*c+c*b);
+            document.getElementById("parale").innerHTML = pArea;
+        };
+
+    </script>
+
+</head>
+
+<body>
+    <p id="cuadrado"></p>
+    <button type="button" onclick="cuadrado()">Área cuadrado</button>
+
+<p id="trian"></p>
+<button type="button" onclick="triangulo()">área triángulo</button>
+
+  <p id="circulo"></p>
+  <button type="button" onclick="circulo()">Área círculo</button>
+
+    <p id="parale" ></p>
+    <button type="button" onclick="paralelepipedo()">Área paralelepipedo</button>
+
+</body>
+
+</html>

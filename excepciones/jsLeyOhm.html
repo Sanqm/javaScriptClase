@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ley de Ohm</title>
+ 
+</head>
+<body>
+   
+    <table>
+        <tr>
+            <td> <fieldset>
+                <legend>Cálculo de la ley de Ohm</legend>
+                <p><label for="">v = i*r  ==>  p=iv</label></p>
+                <p>
+                    <label for="volTxt">Volataje:</label>
+                    <input type="text" id="volTxt" required>
+                    <button id="volBtn" onclick="isValidVol(document.getElementById('volTxt').value)">Enviar</button>
+                </p>
+                <p>
+                    <label for="intTxt">Intensidad:</label>
+                    <input type="text" id="intTxt" readonly>
+                </p>
+                <p>
+                    <label for="resTxt">Resistencia:</label>
+                    <input type="text" id="resTxt" required>
+                    <button  id="resBtn" onclick="isValidRes(document.getElementById('resTxt').value)">Enviar</button>
+                </p>
+            </td>
+            <td>
+                <p>
+                    <fieldset>
+                        <p>
+                            <label for="potText">Potencia: </label>
+                            <input type="text" id="potText" readonly>
+                        </p>
+                        <p>
+                            <button id="calBtn" onclick="calcularP()">Calcular</button>
+                            <button id="resetBtn" onclick="erase()">Borrar</button>
+                        </p>
+                        
+                    </fieldset>   
+            </td>
+        </tr>
+    </table>
+
+    <script>
+      
+     
+       // Esta función valida si se ha intrducido un valor númerico 
+       function isValidVol(v){
+        console.log(v);
+        v= parseFloat(v);
+        
+        try {
+            if(isNaN(v)) throw "El dato introducido no es número";
+            return true;
+        } catch (e) {
+            alert(e);
+        }
+       }
+
+       // esta función valida si se ha introducido un númerico y si cumple con los valores correctos para una resistencia
+       function isValidRes(r){
+        r = parseFloat(r);
+        console.log(r);
+        try {
+            if (isNaN(r)) throw "El valor introducido no es un número";
+            if (r <=0) throw "El valor introducido no es un rango válido para resistencias";
+            return true;
+        } catch (e) {
+            alert(e);
+        }
+        
+       }
+       function calcularP(){
+
+            vol = parseFloat(document.getElementById('volTxt').value);
+            res = parseFloat(document.getElementById('resTxt').value);
+            console.log(vol);
+            console.log(res);
+        
+            if (isValidRes(res) && isValidVol(vol)) {
+
+                int= vol/res;
+                document.getElementById("intTxt").value = int; // esto está funcionando y escribe en intesisdad 
+                pot = int *vol;
+                document.getElementById("potText").value = pot; 
+            }
+         }
+        
+         function erase(){
+            document.getElementById("volTxt").value = "";
+            document.getElementById("resTxt").value = "";
+            document.getElementById("intTxt").value = "";
+            document.getElementById("potText").value = ""; 
+         }
+      
+    </script>
+</body>
+</html>

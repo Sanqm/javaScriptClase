@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio Cordenadas</title>
+    <style>
+     
+      div {
+        border: 2px solid red;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body onmousemove="fCordenadas(event); fCordenadasP(event)">
+    <p>mueve el ratón para obtener cordenadas</p>
+    <p id="coordenadas"></p>
+    <p id="coordenadasDiv"></p>
+    <p id="coordenadasPantalla"></p>
+    <div id="corDiv" onmousemove="fCordenadasDiv(event)"></div>
+
+    <script>
+      function fCordenadas(e) {
+        let x = e.pageX;
+        let y = e.pageY;
+        let cod = "Cordenada x: " + x + " cordenada y " + y;
+        document.getElementById("coordenadas").innerHTML = cod;
+      }
+
+      function fCordenadasDiv(e) {
+        let x = e.offsetX;
+        let y = e.offsetY;
+        document.getElementById("coordenadasDiv").innerHTML =
+          "Las coordenados son: " + x + " , " + y;
+      }
+
+      function fCordenadasP(e){
+        let x=  e.screenX;
+        let y = e.screenY;
+        document.getElementById("coordenadasPantalla").innerHTML = "Cordenadas de la pantalla: " + x + "," +y;
+       }
+      
+      
+       /*
+        The screenX Property	The Screen area
+        The screenY Property	The Screen area
+        The clientX Property	The Window area
+        The clientY Property	The Window area
+        The pageX Property	  The Page (Document)
+        The pageY Property	  The Page (Document)
+        The offsetX Property	The target Element
+        The offsetY Property	The target Element
+      
+      
+      
+      */
+    </script>
+  </body>
+</html>

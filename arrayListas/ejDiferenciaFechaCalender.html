@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diferencia de Fechas con calender</title>
+    <script>
+      let date = new Date();
+      function calcular() {
+        let acDate = document.getElementById("actualDate").valueAsDate;
+        console.log(acDate.getDate());
+      }
+    </script>
+  </head>
+  <body>
+    <p>
+      <label for="">Fecha actual:</label>
+      <script>
+        document.write(date);
+      </script>
+    </p>
+
+    <p>
+      <label for="">Selecciona fecha a calcular: </label>
+      <input type="date" id="actualDate" />
+    </p>
+    <p>
+      <button type="submit" value="calculate" onclick="calcular()">
+        Calcular
+      </button>
+    </p>
+  </body>
+</html>

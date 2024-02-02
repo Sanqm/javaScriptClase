@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elementos formulario</title>
+  </head>
+  <body>
+    <fieldset>
+      <legend>Entrada</legend>
+      <label for="">Cuadro de texto de texto: </label><br />
+      <input
+        id="txtInput"
+        type="text"
+        placeholder="Esto es un cuadro de texto"
+      />
+      <input
+        id="txtInput2"
+        type="text"
+        placeholder="Esto es un cuadro de texto"
+      /><br /><br />
+      <label for="">Área de texto:</label><br />
+      <textarea
+        name=""
+        id="txtArea"
+        cols="30"
+        rows="10"
+        placeholder="esto es una área de texto"
+      ></textarea
+      ><br /><br />
+      <textarea
+        name=""
+        id="txtArea2"
+        cols="30"
+        rows="10"
+        placeholder="esto es una área de texto 2"
+      ></textarea
+      ><br /><br />
+      <hr />
+      <br />
+      <label for="">CheckBox:</label><br /><br />
+      <input
+        type="checkbox"
+        id="chckBox1"
+        name="chckBox"
+        value="1"
+        onclick="boxClick()"
+      />
+      Opción 1
+      <input
+        type="checkbox"
+        id="chckBox2"
+        name="chckBox"
+        value="2"
+        onclick="boxClick()"
+      />
+      Opción 2
+      <input
+        type="checkbox"
+        id="chckBox3"
+        name="chckBox"
+        value="3"
+        onclick="boxClick()"
+      />
+      Opción 3
+      <input
+        type="checkbox"
+        id="chckBox4"
+        name="chckBox"
+        value="4"
+        onclick="boxClick()"
+      />
+      Opción 4 <br /><br />
+      <hr />
+      <!--En los radio button solo podrá aparecer seleccionado por defecto una opción, 
+        en caso de querer realizar varias selecciones se deberan crear grupos de radio button diferentes-->
+
+      <label for="">Radio Button</label><br /><br />
+      <input
+        type="radio"
+        id="rd1"
+        name="rd"
+        value="1"
+        onclick="radioClick()"
+      />1
+      <input
+        type="radio"
+        id="rd2"
+        name="rd"
+        value="2"
+        onclick="radioClick()"
+      />2
+      <input
+        type="radio"
+        id="rd3"
+        name="rd"
+        value="3"
+        onclick="radioClick()"
+      />3
+      <input
+        type="radio"
+        id="rd4"
+        name="rd"
+        value="4"
+        onclick="radioClick()"
+      />4 <br /><br />
+      <hr />
+      <!--En las listas utilizando el atributo multiple podemos conseguir que una lista pueda ser 
+        de selección múltiple o de selección única-->
+      <label for="">Listas Seleccionables:</label><br /><br />
+      <select name="selec" id="selec" multiple onchange="mulList()">
+        <option value="1">Selecccione la opción 1</option>
+        <option value="2">Selecccione la opción 2</option>
+        <option value="3">Selecccione la opción 3</option>
+        <option value="4">Selecccione la opción 4</option>
+      </select>
+      <select name="selec2" id="selec2">
+        <option value="1">Selecccione la opción 1</option>
+        <option value="2">Selecccione la opción 2</option>
+        <option value="3">Selecccione la opción 3</option>
+        <option value="4">Selecccione la opción 4</option>
+      </select>
+      <br /><br />
+      <hr />
+      <label for="">Botones</label><br /><br />
+      <button id="btn1">Esto es un botón</button>
+    </fieldset>
+
+    <script>
+      // accediendo al ".value" podedemos establecer un valor para el cuadro de texto;así como recogerlos
+      document.getElementById("txtInput").value = "hola"; // establecemos valor
+      var txt2; // creamos variable  que almacenará el valor
+      txt2 = document.getElementById("txtInput2").value; // que almacenará lo que escribamos en el texto
+    </script>
+    <script>
+      // El área de texto funciona de forma muy similiar al cuadro de texto.
+      document.getElementById("txtArea").value =
+        'Este valor lo establecemos con el atributo "value" ';
+      var txtArea;
+      txtArea = document.getElementById("txtArea2"); // almacenará el valor que introduzcamos en el text área
+    </script>
+
+    <script>
+      /*Esta función que se llamará en el onclick de cada checkbox nos indicara si se ha seleccionado el mismo o no*/
+      function boxClick() {
+        var chequeados = document.getElementsByName("chckBox"); // creamos un array al que le vamos a meter
+        // los radio button del grupo chckBox
+
+        let options = ""; // creamos una variable que almacenará las opciones chequeadas
+        chequeados.forEach(function (ck) {
+          // recorremos el array de checkbox  buttons
+          if (ck.checked) {
+            // si se encuentran chequeados
+            options += ck.value + " "; // lo agregará a la variable que almacenas los checkbox habilitados
+            // esto lo logramos con la propiedad value que recoge el valor
+          }
+        });
+
+        window.alert("Check  " + options); // emitimos una alerta por pantalla de las opciones chequeadas
+      }
+    </script>
+
+    <script>
+      /*Esta función evalua cual de las opciones de los radiobutton se han seleccionado, (a diferencia de los checkbox
+anteriores no es posible la selección múltiple para radioButtons del mismo grupo*/
+      function radioClick() {
+        var radiock = document.getElementsByName("rd"); // metemos en un array los elementos radiobutton existentes
+        var op = 0;
+        radiock.forEach(function (rdb) {
+          // recorremos dicho array
+          if (rdb.checked) {
+            op = rdb.value; // recogemos la opción seleccionada en una variable
+          }
+        });
+        // y para hacerlo un poco distinto al anterior creamos un switch que dependiendo de la opción seleccionada
+        // realice una acción
+        switch (
+          parseInt(op) // IMPORTANTE, es necesario que obligues a la función cuando tratamos con valores
+        ) {
+          // numéricos a que sea tomado como un integer.
+          case 1:
+            alert("Opción seleccionada " + op);
+            break;
+
+          case 2:
+            alert("Opción seleccionada " + op);
+            break;
+          case 3:
+            alert("Opción seleccionada " + op);
+            break;
+          case 4:
+            alert("Opción seleccionada " + op);
+            break;
+          default:
+            alert("No ha seleccionado opción");
+            break;
+        }
+      }
+    </script>
+
+    <script>
+      /*Esta función controla la selección multiple en las listas */
+      function mulList() {
+        let list = document.getElementById("selec"); // creamos un  array que almacena los elementos 
+        // de la lista, es importante en este punto diferenciar entre el getElementById y el getElementeByName 
+        // ya que este último seleccionara los nodos 
+        let op = "Opciones introducidas: "; // creamos variable que almacena las opciones seleccionadas 
+        
+        Array.from(list).forEach(function (lis) {
+            
+            if (lis.selected) {  // si esta seleccionada 
+              op += lis.value + " "; // se almacena 
+            }
+
+        });
+       alert(op); // emitiemos alerta con las opciones seleccionadas
+      }
+    </script>
+  </body>
+</html>

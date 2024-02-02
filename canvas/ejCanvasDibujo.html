@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dibujo</title>
+    <style>
+        canvas{
+            border: solid 2px black;
+            background-color: white;
+        }
+    </style>
+    <script>
+        const W = 5;
+        const H = 5;
+        var draw = false; // booleano que controla si se aciva o no el modo 
+        // dibujo 
+      
+        /*Función que permite cambiar el fondo de pantalla si se 
+        activa el modo juego o no */
+        function iSdibujar() {
+            var cuerpo = document.getElementById('cuerpo');
+            let d = event.key;
+            console.log(d);
+            if (d == "d" || d == "D" ) {
+                if (draw) {
+                    draw = false;
+                    cuerpo.style.backgroundColor = "white";    
+                }else{
+                    draw = true;
+                    cuerpo.style.backgroundColor = "pink";    
+                }
+            }
+        } 
+
+
+        function dibujar() {
+
+            // metemos en una variable el cambas 
+            canvas = document.getElementById('dibujo');
+
+            // recogemos las cordenadas del ratón
+            let x = event.pageX; 
+            let y = event.pageY;
+            
+            
+            if (canvas.getContext) {
+                // si es posible creamos cambas en 2D
+                var ctx = canvas.getContext("2d");
+
+                if(draw){
+                    // se esta la variable draw a true dibujamos 
+                    ctx.fillStyle = "green";
+                    ctx.fillRect(x, y, W, H);
+                }else{
+                    // si no no dibujamos
+                    ctx.fillStyle = "white";
+                    ctx.fillRect(0,0 , 5, 5);
+                }
+            }
+        }
+
+
+    </script>
+
+        
+
+
+</head>
+
+<body id="cuerpo" onkeydown="iSdibujar()">
+    <canvas id="dibujo" width="500px" height="300px" onmousemove="dibujar()"></canvas>
+</body>
+
+</html>

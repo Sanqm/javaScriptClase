@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafo Completo</title>
+    <style>
+        canvas {
+            margin: 2em;
+            width: 600px;
+            height: 600px;
+            border: solid 2px black;
+        }
+
+        .opciones {
+            border: solid 1px black;
+            margin: 2em;
+            padding: 1em;
+        }
+    </style>
+    <script>
+        const CX = 300;
+        const CY = 300;
+        const R = 50;
+        const DEGCIRCULO = 360;
+        //var op = "";
+
+        function opciones(op) {
+            console.log("estoy")
+            const c = document.getElementById('lienzo');
+           // op = document.querySelector("figura").value;
+            console.log("opcion" + op);
+            switch (op) {
+                case 1:
+                    cuadrado();
+                    break;
+                case 2:
+                    pentagono();
+                    break;
+                case 3:
+                    hexagono();
+                    break;
+                case 4:
+                    document.getElementById('otro').setAttribute.required = true;
+                    oFigura();
+
+            }
+        }
+
+        function cuadradro() {
+            var pts = 4;
+            var degAngulo = DEGCIRCULO/pts;
+            coordenadas = [];
+            while (degAngulo <= DEGCIRCULO) {
+                let x1 = Math.floor(CX + (R * Math.sin((gradosAngulo * Math.PI) / 180)));
+                let y1 = Math.floor(CY - (R * Math.cos((gradosAngulo * Math.PI) / 180)));
+                coordenadas.push(x);
+                coordenadas.push(y);
+                puntosCalculados.push(coordenadas);
+                degAngulo+=DEGCIRCULO;
+            }
+            if (canvas.getContext) {
+            //Dibujamos las horas
+            dibujarPuntos();
+            //Dibujamos la primera linea
+            ctx.beginPath();
+            ctx.strokeStyle = "red";
+            ctx.lineWidth = 5;
+            //La linea nace en el punto central
+            ctx.moveTo(CX, CY);
+            //La linea sigue todo el punto una distancia igual al radio
+            ctx.lineTo(CX, (CY - R));
+            ctx.stroke();
+        }
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <canvas id="lienzo"></canvas>
+    <p></p>
+    <div class="opciones">
+        <input type="radio" name="figura"  onclick="opciones(1)">Cuadrado
+        <p></p>
+        <input type="radio" name="figura"  onclick="opciones(2)">Pentágono
+        <p></p>
+        <input type="radio" name="figura"  onclick="opcionex(3)">Hexágono
+        <p></p>
+        <input type="radio" name="figura"  onclick="opciones(4)">otro
+        <input type="text" id="otro">
+    </div>
+
+</body>
+
+</html>

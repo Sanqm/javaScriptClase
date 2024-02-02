@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números</title>
+</head>
+
+<body>
+    <script>
+        var x = 10;
+        var y = "20";
+        var z = "30";
+        var res;
+
+        res = x + y;
+        document.write(res);
+        document.write("<br><hr>");
+
+        res = y + z;
+        document.write(res);
+        document.write("<br><hr>");
+
+        res = y - z;
+        document.write("<br>" + res);
+        document.write("<br><hr>");
+
+        res = y / "hola";
+        document.write("<br>" + res);
+        document.write("<br><hr>");
+
+        res = x / 0;
+        document.write("<br>" + res);
+        document.write("<br><hr>");
+
+        document.write("//////////// METODOS NÚMERICOS ///////////////////////");
+        document.write("<br><hr>");
+
+        var entero = 7;
+        var real = 7.96365;
+
+        document.write(entero.toString(2));
+        // permite pasar un número a string si se le indica base
+        //  (2) binario -- lo mostrará en dicha base
+        document.write("<br><hr>");
+
+        document.write("<br>" + real.toExponential(3));
+        // pasa un númoro a stirng devolviendolo  en formato exponencial
+        document.write("<br><hr>");
+
+
+        document.write("<br>" + real.toFixed(4));
+        // pasa el número a string devolviendolo con tantos decimales como se indique
+        document.write("<br><hr>");
+
+
+
+        document.write("<br>" + real.toPrecision(4));
+        //pasa un número a string con tantos digitos como se especifique , usa redondeo
+        document.write("<br><hr>");
+
+
+        document.write("<br>" + Number("true") + "<br>");
+        document.write("  154   ");
+        //devuelve lo que se le pasa como argumeto con numericos en 
+        //sus diferentes vertientes
+        document.write("<br><hr>");
+
+
+        
+        document.write(parseInt("22.36"));
+        // devuelve como número entero lo que se le pasa como argumento
+        document.write("<br><hr>");
+
+
+        document.write(parseFloat("22.36"));
+        // devuelve un string como númerico en coma flotante 
+        document.write("<br><hr>");
+        
+        
+
+    </script>
+</body>
+
+</html>

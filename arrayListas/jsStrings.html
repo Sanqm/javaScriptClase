@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String:ejemplos</title>
+</head>
+<body>
+    <script>
+        var txt = "Esto es una prueba de metodos de cadena";
+        document.write("Longitud de txt: ");
+        document.write(txt.length); // calacula la longitud de una cadena de texto
+        
+        document.write("<br> <hr>");
+
+
+        document.write("<br>" + "Posición de la cadena \"de\": ");
+        document.write(txt.indexOf("de")); // permite buscar la posición de 
+        //una cadena o caracter
+        document.write(txt.search("de"));
+        document.write("<br> <hr>");
+
+        document.write("<br>" + "Extracción de texto entre pos 5 y 9: ");
+        document.write(txt.slice(5,9)); // permite obtener los caractres comprendidos
+        // entre las posiciones indicadas 
+        document.write("<br> <hr>");
+
+        document.write("<br>" + "Reemplazo de 'cadena' por 'string': ");
+        document.write(txt.replace("cadena", "string"));
+        // permite remplazar una cadena de caracteres por otra 
+        document.write("<br> <hr>");
+
+
+        document.write("<br>" + "Caracter en posición 8: ");
+        document.write(txt.charAt(8));
+        // permite obtener el caracter en determinada posición
+        document.write("<br> <hr>");
+
+
+        document.write("<br>" + "Código Unicode en posción 8: ");
+        document.write(txt.charCodeAt(8));
+        // permite obtener la codificación en unicode de un caracter en 
+        //determianda posición
+        document.write("<br> <hr>");
+
+        
+        document.write("<br>" + "Convertir txt en un vector usando el espacio como separador");
+        var v = txt.split(" ");
+        //convierte un string en una array indiando el dimilitador de separación
+        document.write("<br>" + "Elemento 3: " + v[3]);
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa Principal</title>
+    <style>
+        div {
+            padding: 5px;
+            text-align: center;
+            border: 1px solid black;
+            width: 400px;
+            height: 150px;
+        }
+
+        #divParar {
+            border: none;
+        }
+    </style>
+    
+</head>
+
+<body onload="contador()">
+    <div id="vel1">
+        <p><label for="">Velocímetro 1</label></p>
+        <p><button id="btnVe1mas" onclick="mas()">+</button>
+            <button id="btnVe1menos" onclick="menos()">-</button>
+        </p>
+        <input type="text" id="t1" onclick="menos">
+    </div>
+    <div id="vel2">
+        <p><label for="">Velocímetro 2</label></p>
+        <p><button id="btnVe2mas">+</button>
+            <button id="btnVe2menos">-</button>
+        </p>
+        <input type="text" id="t2">
+    </div>
+    <div id="divParar">
+        <p><button id="parar">Parar</button></p>
+    </div>
+
+    <script>
+        var op = 0;
+        var tmp = 1000;
+        var t1 = document.getElementById("t1");
+
+
+        function contador() {
+    
+
+            w = new Worker("wContadorUno.js");
+            w.postMessage(op);
+            w.onmessage = function (event) {
+                t1.value = event.data;
+            }
+            console.log(t1);
+        }
+        function mas() {
+            op = 1;
+            return --tmp;
+        }
+        function menos() {
+            op = 2;
+            return ++tmp;
+        }
+    </script>
+</body>
+
+</html>

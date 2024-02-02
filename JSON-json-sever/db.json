@@ -1,0 +1,10 @@
+{
+  "usuarios": [
+    { "id": 1, "nombre": "Juan Pérez" },
+    { "id": 2, "nombre": "María García" }
+  ],
+  "publicaciones": [
+    { "id": 1, "titulo": "Mi primera publicación" },
+    { "id": 2, "titulo": "Otra publicación" }
+  ]
+}

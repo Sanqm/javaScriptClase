@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio </title>
+    <style>
+        canvas {
+            border: solid 5px red;
+        }
+    </style>
+    <script>
+
+        const H = 5;  // creamos constante que define el tamaño del punto
+        // en altura
+        const W = 5; // idema anterior pero para ancho 
+        function draw() {
+            let x = event.clientX;
+            let y = event.clientY;
+
+
+            var canvas = document.getElementById("minigame");
+            //asignamos el elemento cavas a una cariable
+            if (canvas.getContext) {
+                // si es posible le indicamos que se creé en modo 2d
+                var ctx = canvas.getContext("2d");
+                ctx.fillStyle = "green"; // lo definifmos del color 
+                ctx.fillRect(x, y, H, W); // en la posición indicada por el ratón
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <canvas id="minigame" onclick="draw()" width="1000px" height="400px"></canvas>
+</body>
+
+
+</html>

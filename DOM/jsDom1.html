@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 1</title>
+</head>
+<body>
+    <p>Hola</p>
+    <p>Adios</p>
+    <p class="mi_parrafo">Un párrafo cualquiera</p>
+    <p class="mi_parrafo">Otro párrafo cualquiera</p>
+    <script>
+        var parrafos = document.getElementsByTagName("p"); // meto todos los parrafos al seleccionarlos con ByTagName y accedo a su valor.
+        var i = 0;
+        while (parrafos[i]) {
+            document.write("<br>");
+            document.write("Texto en pos " + i + " : " 
+            + parrafos[i].innerHTML);
+            i++;
+        }
+        document.getElementsByClassName('mi_parrafo')[0].style.fontWeight='900'; //  da estilo a los párrafos de class "mi_parrafo"
+        document.getElementsByClassName('mi_parrafo')[1].style.fontWeight='900'; // idem anterior
+    </script>
+</body>
+
+</html>

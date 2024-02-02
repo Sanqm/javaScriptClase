@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poo getter y setter</title>
+</head>
+<body>
+    <script>
+        var persona = {
+            nombre : "Pepe",
+            apellido : "Perez",
+            id: "",
+            set identificador(id){
+                this.id = id;
+            },
+            get identificador(){
+                return this.id;
+            }, 
+        }; 
+        persona.identificador = 123;
+        document.write(persona.id); // puedes acceder o bien 
+        // con el artributo o con el nombre dado al setter o getter 
+        // que modifica ese atributo
+    </script>
+</body>
+</html>

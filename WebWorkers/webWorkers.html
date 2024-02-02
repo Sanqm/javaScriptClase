@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciando Web Workers</title>
+</head>
+
+<body>
+    <p>Secuencia de Fibonaci: <output id="result"></output></p>
+    <button onclick="starWorker()">Star Worker</button>
+    <button onclick="stopWorkder()">Stop Worker</button>
+    <p><strong>Note:</strong>Esto funcina en Firefox y Safari pero no en Chrome.</p>
+    <script>
+        var w;
+        //function starWorker() {
+          //  w = new Worker("trabajador.js");
+          //  w.onmessage = function (event) {
+          //      document.getElementById("result").innerHTML = event.data;
+          //  };
+
+       // }
+
+       // con una funcion flecha 
+       function starWorker() {
+          w = new Worker("trabajador.js");
+          w.onmessage = e => document.getElementById("result").innerHTML = e.data;
+        }
+
+
+        function stopWorkder() {
+            w.terminate();
+            w = undefined;
+        }
+    </script>
+</body>
+
+</html>

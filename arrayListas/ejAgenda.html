@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agenda</title>
+
+    <script>
+      const NPer = 8; // numero máximo de personas a almacenar
+      const NDat = 3; // número maximo de campos a almacenar
+      var cont = 0;
+      var persona = new Array(NPer); // agenda que contendra ocho persona maximo
+
+      for (let i = 0; i < persona.length; i++) {
+        persona[i] = new Array(NDat);
+      }
+
+      for (let i = 0; i < persona.length; i++) {
+        for (let j = 0; j < persona[i].length; j++) {
+          persona[i][j] = null;
+        }
+      }
+
+      function save() {
+        var names = document.getElementById("nombre").value;
+        var age = (age = document.getElementById("edad").value);
+        var mail = document.getElementById("email").value;
+        var agenda = [names, age, mail];
+
+        for (let i = 0; i < agenda.length; i++) {
+          persona[cont][i] = agenda[i];
+        }
+        cont++;
+      }
+
+      function show() {
+        dato = "";
+        for (let i = 0; i < cont; i++) {
+          for (let j = 0; j < persona[i].length; j++) {
+            dato += persona[i][j] + "-";
+          }
+        }
+        dato += "\n";
+        document.getElementById("textshow").value = dato;
+      }
+
+      function find() {
+        console.log("funcion buscar");
+        let encontrar = document.getElementById("etrarTxt");
+        let campo = document.getElementsByName("buscar").value;
+        console.log(campo);
+        let dato = " ";
+        for (let i = 0; i < cont; i++) {
+          for (let j = 0; j < persona[i].length; j++) {
+           
+            
+          }
+        }
+        document.getElementById("textshow").value = dato;
+      }
+
+    </script>
+  </head>
+  <body>
+    <fieldset>
+      <legend>Formulario de Contacto</legend>
+      <br />
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" /> <br /><br />
+      <label for="edad">Edad:</label>
+      <input type="text" id="edad" /><br /><br />
+      <label for="email"></label>Email:
+      <input type="email" id="email" /><br /><br />
+      <button id="guardar" onclick="save()">Guardar</button>
+      <button id="mostrar" onclick="show()">Mostrar</button>
+      <button type="reset">Resetear</button><br /><br />
+      <!-- un boton creado con un input solo admite texto-->
+    </fieldset>
+    <fieldset>
+      <legend>Buscar y borrar</legend>
+      <br />
+      <input type="radio" name="buscar" id="b1" value="1" />Nombre
+      <input type="radio" name="buscar" id="b2" value="2" />Edad
+      <input type="radio" name="buscar"  id="b3" value="3" />Email <br /><br />
+      <input type="text" id="encontrarTxt" />
+      <button type="submit" id="findBtn" onclick="find()">Buscar</button>
+      <button type="submit" id="deleteBtn">Borrar</button>
+    </fieldset>
+    <fieldset>
+      <legend>Resultados</legend>
+    <br /><textarea
+      name="textshow"
+      id="textshow"
+      cols="50"
+      rows="10"
+    ></textarea>
+  </fieldset>
+  </body>
+</html>

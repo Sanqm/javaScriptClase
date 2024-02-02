@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciuades</title>
+    <script>
+        function muestraSugerencias(str){
+            if(str.length == 0){
+                document.getElementById("txtSugerencia").innerHTML = "";
+                return;
+                // si no se teclea nada se sale de la función
+            }else{
+                // si no 
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function (){
+                    if (this.readyState == 4 && this.status == 200) {
+                        //el 4 y el 200 corresponden a codigos que devuelve el servidor para indicar que tdo
+                        // es correcto 4 peticion completada y respuesta lista, y 200 devuelve la conexion correcta
+                        // con sevidor
+                        document.getElementById("txtSugerencia").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET", "http://localhost:5500/home/sandra.queimadelosmachado/Documentos/dawCliente/JavaScript/AJAX/getSugerencia.php?param=" + str, true);
+                xmlhttp.send();
+            }
+        }
+    </script>
+    <style>
+        #sug{
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <p><b>Escribe el nombre de alguna ciudad a la que quieras ir:</b></p>
+    <form >
+        Ciudad:<input type="text" onkeyup="muestraSugerencias(this.value)">
+    </form>
+        <p>Sugerencias: <span id="txtSugerencia"></span></p>
+</body>
+</html>

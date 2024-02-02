@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias</title>
+</head>
+<body>
+    <p id="salida"></p> <!--Párrafo que almacenará los datos de salida decodificados del json-->
+    <script>
+        w = new Worker("ww.js"); // creamos el nuevo worker que ejecutará el archivo js especificado
+        w.onmessage = function (e){ // en respuesta del worker, recibiendo junto con el evento el arraya decodificado de json
+            salida = ""; //variable salida que almacenará los datos de salida concatenados
+            for (let i = 0; i < e.data.length; i++) {
+                // recorremos el array recibido y vamos concatenando los campos a la variable salidada
+                salida += e.data[i].nombre +" " + e.data[i].edad + "<br>";
+            }
+            document.getElementById("salida").innerHTML = salida // finalmente mostramos los resultados
+        }
+    </script>
+</body>
+</html>

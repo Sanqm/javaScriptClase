@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #circulo{
+            border: solid 2px black;
+            border-radius: 50%;
+            position:absolute;
+            height: 400px;
+            width: 400px;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="circulo"></div>
+    <script>
+
+        circle = document.getElementById("circulo");
+
+        punto = document.createElement("div");
+        punto.style.backgroundColor = "black";
+        punto.style.position = "absolute";
+        punto.style.width = "0px";
+        punto.style.height = "0px";
+        punto.style.left = (circle.getBoundingClientRect().left + 200) + "px";
+        punto.style.top = (circle.getBoundingClientRect().top + 200) + "px";
+        document.body.appendChild(punto);
+    </script>
+</body>
+</html>

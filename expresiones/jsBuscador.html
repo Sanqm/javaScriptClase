@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buscador</title>
+    <script>
+        function find(){
+            var seartTxt = document.getElementById("searchBox").value;
+            var reg = new RegExp(seartTxt); // es necesario para convertir una cadena en una expresión regular
+            var txt = document.getElementById("txtP").innerHTML;
+            console.log(seartTxt);
+            console.log(txt);
+
+            if (reg.exec(txt)) {
+                document.getElementById("result").innerHTML = "Existe lo buscado";
+            }else{
+                document.getElementById("result").innerHTML = "NO existe lo buscado";
+            }
+        }
+
+    </script>
+  </head>
+  <body>
+    <h1>Artículo Informático</h1>
+    <p id="txtP">
+      Lorem ipsum  sandra dolor sit amet, consectetur adipiscing elit. Etiam sagittis,
+      velit hendrerit tincidunt fermentum, mi magna aliquam ligula, viverra
+      dictum sem leo in metus. Integer suscipit vitae lectus sed iaculis. Fusce
+      bibendum neque volutpat, imperdiet erat efficitur, ullamcorper nulla.
+      Proin vel elementum enim. Quisque viverra efficitur est, non scelerisque
+      nulla facilisis vel. Ut maximus orci vel pretium ultrices. Fusce ac ligula
+      a nulla lobortis tempor. Aliquam malesuada ligula eu euismod bibendum.
+      Vestibulum ut vulputate sem. Vivamus tempus, tortor tristique pharetra
+      malesuada, turpis odio rutrum enim, vel mattis sem magna non quam.
+      Phasellus consequat, ex eget semper laoreet, tortor eros lacinia diam, non
+      pharetra arcu ex eu odio.
+    
+   
+      Suspendisse semper pulvinar commodo. Phasellus ultrices convallis leo sit
+      amet euismod. Sed vehicula  non arcu in luctus. Proin eleifend varius
+      libero, sed consequat elit scelerisque ut. Donec tortor justo, consequat
+      sed nulla egestas, consequat consequat nisl. Ut cursus nunc nec justo
+      mollis, volutpat sodales mi porttitor. Donec sit amet dignissim libero.
+      Cras eu lorem eros. Nunc sed odio aliquet, sodales velit a, dictum enim.
+      Cras euismod quam maximus neque efficitur placerat. Pellentesque porttitor
+      massa sit amet dictum vestibulum.
+   
+
+      Maecenas neque ligula, scelerisque a porta at, laoreet in tortor. Nunc ac
+      lectus lobortis, facilisis ante ac, hendrerit ante. Donec convallis elit
+      vel cursus tempus. Nulla facilisi. Aenean lacus massa, facilisis sed porta
+      ut, interdum nec sem. Phasellus lacinia, massa a congue suscipit, arcu
+      quam vehicula tellus, volutpat feugiat mauris dolor in tellus. Nulla sit
+      amet felis eu orci placerat laoreet sed eget enim. Ut ornare nisi ac nulla
+      commodo hendrerit. Curabitur pretium massa non neque fringilla, quis
+      dignissim lectus blandit. Ut massa arcu, congue a libero efficitur,
+      sodales ultricies quam. Nunc dolor eros, consectetur sit amet blandit vel,
+      tempor lacinia nunc. Aliquam turpis leo, ultricies eget tortor quis,
+      sollicitudin gravida ante. Aenean nulla lectus, iaculis id vulputate
+      mattis, molestie eu est. Quisque feugiat laoreet consectetur. Aenean nec
+      mauris eget mi volutpat accumsan.
+    </p>
+<p id="result"></p>
+    <input type="text" id="searchBox">
+    <button id="searchBtn" onclick="find()">Buscar</button>
+  </body>
+</html>

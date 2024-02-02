@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ajax con Worker v3</title>
+    </head>
+    <body>
+        <p id="imagenes"></p>
+        <p id="noticias"></p>
+        <script>
+            /*creamos las variables que almacenarán los párrafos de salida*/
+            var img = document.getElementById("imagenes"); 
+            var not = document.getElementById("noticias");
+
+            /*creamos el worker que manejará el js con las imaganes */
+            wimagenes = new Worker("noticias.js");
+            wimagenes.onmessage = function (e) {
+                out = "";
+                for (i = 0; i < e.data.length; i++) {
+                    /*ojo con el data aquí que es una propieda del worker y no una variable definada por el usuario
+                    recorremos el array de objetos devueltos con las instancias del json y los recorremos para concatenarlos en la salida*/
+                    out += '<img src=" ' + e.data[i].url + '"> ' + '<p>' + e.data[i].pie + '</p>';
+                }
+                img.innerHTML = out; // mostramos resulstados
+            }
+
+            /*idem anterior con la modificación del estilo de salida de los datos adaptándolo al tipo de info*/
+            wnoticias = new Worker("noticiasTexto.js");
+            wnoticias.onmessage = function (e) {
+                out = "";
+                for (i = 0; i < e.data.length; i++) {
+                    out += '<h1>' + e.data[i].titular + '</h1>' + '<p>' + e.data[i].texto + '</p>';
+                }
+                not.innerHTML = out;
+            }
+
+            function procesarNoticas (archivojs){
+                wnoticias = new Worker (archivojs);
+                wnoticias.onmessage = function (e){
+                    out=""; 
+                    for ( i = 0; i < e.data.length;i++) {
+                        ext = e.data[i].url.split(".");
+                        if(ext =="jpeg"){
+                            out+= '<img src="'+ e.data[i].url +'" >';
+                        }else{
+                            out += '<p>'+ e.data[i].texto + '</p>';
+                        }
+                        
+                    }
+                    img.innerHTML = out;
+                }
+
+
+            }
+
+
+
+        </script>
+    </body>
+</html>

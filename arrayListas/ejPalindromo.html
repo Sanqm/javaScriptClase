@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio Palíndroma</title>
+
+    <script>
+        // esta función nos indicará si una frase es palídroma
+      function palindromo() {
+        frase = document.getElementById("sentenceBox").value; // almacenamos en un array la frase indicada 
+        longitud = frase.length - 1; // almacenamos en una variable la longitud del array menos 1 ya que length devuelve valor real
+        pal = false; // creamos una variable booleana que nos irá valindando si se cumple el patrón 
+        for (let i = 0; i < longitud; i++) { // recorremos array
+          if (frase[i] == frase[longitud-i]) { // empezando en una punta comparándola con la otra 
+            pal = true; // si coinciden será un palíndromo
+          } else {
+            pal = false;  // si no no será palíndromo 
+          }
+         
+        }
+        // dependiendo del resultado printeará un mensaje u otro
+        if (pal) {
+            document.getElementById("palin").innerHTML = "Es palíndroma";
+          } else {
+            document.getElementById("palin").innerHTML = "No es palíndroma";
+          }
+      }
+    </script>
+  </head>
+
+  <body>
+    <p id="sentence">
+      <label for="sentenceBox">Introduzca Frase:</label>
+      <input type="text" id="sentenceBox" placeholder="separada por espacios" />
+      <button style="padding: 20px;" id="send" onclick="palindromo()">Comprobar</button>
+    </p>
+    <p id="palin"></p>
+  </body>
+</html>

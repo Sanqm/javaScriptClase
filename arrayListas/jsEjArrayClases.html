@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio con Arrays</title>
+    <script>
+        function send(){
+           numeros =  document.getElementById("numBox").value.split(",");
+           // metemos en un array los valores que hay en el box 
+          
+            show = " ";  // variable que concatena espacios 
+            suma = 0;  // variable que almacena suma de los pares, se igual a cero por ser suma 
+            multi= 1;  // variable que almacena multplicacion de impares, se iguala a 1 ya que cualquier producto por 1 es valor
+            media = 0; // suma todos los valores
+            max=Number.MIN_SAFE_INTEGER; // variable que almacena el máximo  se igual al valor minimo posible en javascript
+            min=Number.MAX_SAFE_INTEGER; // variable que almacena el mínimo  se igual al valor máximo  posible en javascript
+            numeros.forEach(element => { // recorremos el array de números
+                show = show + element + " "; // concatenamos los diferentes elementos separados por espacios
+                if(element%2==0){ // el número será par si su resto al ser divido por dos es 0
+                    suma = suma + parseInt(element);         // alacenamos elemento par y lo sumamos
+                }else{ // seria impar 
+                    multi = multi * parseInt(element); // almacenamos el elemnto impar y lo multiplicamos 
+                }
+                media = media + parseInt(element); // suma de todos los elmentos 
+                if(element > max){ // comprobamos si el elemento es mayor a lo almacenado en la variable maxima
+                    max=element; // lo realmacenamos si cumple condición
+                }
+               
+                if(element <min ){ // idem anterior pero para el el mínimo
+                    min = element;
+                }
+
+            });
+            
+            document.getElementById("pShow").innerHTML = "Los números son: " +show;
+            document.getElementById("pSuma").innerHTML = "Los suma de los números es pares: " + suma;
+            document.getElementById("pMulti").innerHTML = "Los muliplicacion  de los números impares: " + multi;
+            document.getElementById("pMedia").innerHTML = "Los media   de los números es: " + media/numeros.length;
+            document.getElementById("pMax").innerHTML = " El numero max es: " + max;
+            document.getElementById("pMin").innerHTML = " El numero min es : " + min;
+            // mostramos por pantalla los resultados anterior con la peculiaridad de que en la MEDIA debemos mostrarla
+            // devidiendola entre el número de elementos del array
+        };
+
+        
+
+
+    </script>
+
+
+</head>
+<body>
+    
+    <p id="pSend">
+        <label for="numBox">Introduzca numeros:</label>
+        <input type="text" id="numBox" placeholder="Separados por ','">
+        <button id="send" onclick="send()">Enviar</button>
+    </p>
+
+<p id="pShow"></p>
+<p id="pSuma"></p>
+<p id="pMulti"></p>
+<p id="pMedia"></p>
+<p id="pMax"></p>
+<p id="pMin"></p>
+
+</body>
+</html>

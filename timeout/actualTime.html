@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <p id="hour"></p>
+  <button id="pause" onclick="clearInterval(timer)">Pausar</button>
+  <button id="play" onclick="timer=setInterval(play,1000)">Reanudar</button>
+  <p>
+    <input type="radio" id="r1" value="12" name="rad" />12PM
+    <input type="radio" id="r2" value="24" name="rad" />24PM
+  </p>
+
+  <script>
+    timer = setInterval(play, 1000); // creamos el intervalo que controlará la actulización  de la hora
+
+    /*Esta función muestra por pantantalla la hora actual permitiendo escoger 
+    el formato de visualización*/
+    function play() {
+      date = new Date();  // creamos la variable que almacena la fecha
+      h = date.getHours(); // obtenemos las horas
+      min = date.getMinutes(); // obtenemos los minutos 
+      sec = date.getSeconds(); // obtenemos los segundos
+      selector = document.querySelector('input[name="rad"]:checked').value; // almacenamos 
+      // el formato seleccionado
+      
+      if (h < 10) {
+        h = "0" + date.getHours();
+      }
+      if (min < 10) {
+        min = "0" + date.getMinutes();
+      }
+      if (sec < 10) {
+        sec = "0" + date.getSeconds();
+      }
+      // para evitar mostrar cifras de sólo dígito comprobamos el valor del número si es menor a de un digito sumamos un cero 
+
+      if (selector == 12) {
+        if (h>=13) {
+          h = date.getHours();
+        }else{
+          h = date.getHours()-12;
+        }
+        
+      }
+      document.getElementById("hour").innerHTML = h + ":" + min + ":" + sec; // mostrarmos los  la hora 
+    }
+    
+  </script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+
+        
+        
+      function modificar(op) {
+        console.log(op);
+
+        (op==1) ? 
+        document.getElementById("v01").innerHTML = v01--:
+        document.getElementById("v01").innerHTML = v01++;       
+
+        /*
+        (op==0) 
+        ? (document.getElementById("v01").innerHTML = v01++)
+          : (document.getElementById("v01").innerHTML = v01--)
+            
+        
+        (op==0)
+          ? (document.getElementById("v01").innerHTML = v01++)
+          : (document.getElementById("v01").innerHTML = v01--);*/
+      }
+      v01 = 0;
+      // o para incrementar, 1 para decrementar
+      function play(){
+        pb = document.querySelector('input[name="options"]:checked');
+
+        pb == null ? pb = 0 : pb = 1; /// si no hay elemento seleccionado 
+        t01 = setInterval(modificar, 1000,pb); // funcion, vida util, parametro que recibe a función
+        
+      }
+      function stop(){
+        clearInterval(t01);
+      }
+      
+    </script>
+  </body>
+  <p id="v01"></p>
+  
+  <!--<input type="radio" id="op1" name="options" value="0">Incrementar
+  <input type="radio" id="op2" name="options" value="1">Decrementar-->
+  <input type="checkbox" id="po2" name="options" value="1">Decrementar
+  <p><button id="stop" onclick="stop()">Parar</button>
+    <button id="play" onclick="play()">Arrancar</button></p>
+</html>

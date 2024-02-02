@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date() en la Api</title>
+
+    <script>
+        function mensaje(){
+            let fechatxt = document.getElementById("fecha").value;
+            let fecha = fechatxt.split("/");
+            const MES = ["enero","febrero", "marzo", 
+            "abril", "mayo", "junio", "julio", "agosto", "septiembre", 
+            "octubre", "noviembre", "diciembre"];
+           /* document.write("dia" + fecha[0]);
+            document.write("mes" + fecha[1]);
+            document.write("año" + fecha[2]);*/
+
+            document.write(MES[fecha[1]], ", dia " + fecha[0] + " del año de nuestro señor " + fecha[2] + ".");
+            
+        }
+    </script>
+</head>
+<body>
+    
+
+    <label for="fecha">Introduce la fecha de hoy:</label>
+    <input type="text" id="fecha" placeholder="dd/mm/aaaa"><br><br>
+    <button onclick="mensaje()">Enviar</button><br>
+    <hr>
+    
+</body>
+</html>

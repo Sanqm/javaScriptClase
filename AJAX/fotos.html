@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotos </title>
+</head>
+
+<body>
+    <div id="fotos"></div>
+    <script>
+        var xmlhttp = new XMLHttpRequest();
+        var url = "gatitos.json";
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var listaFotos = JSON.parse(this.responseText);
+               setInterval (getFotos(listaFotos), 50000);
+            }
+        };
+
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+
+
+        function getFotos(arr) {
+            var out = "";
+            var i;
+            for (i = 0; i < arr.length; i++) {
+                out += '<a href="' + arr[i].url + '">' + arr[i].display + '</a><br>';
+                out += '<img src="' +arr[i].url +'">';
+
+            }
+            document.getElementById("fotos").innerHTML = out;
+        }
+    </script>
+</body>
+
+</html>

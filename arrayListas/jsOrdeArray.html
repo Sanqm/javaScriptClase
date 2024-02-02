@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ordenación de arrays</title>
+  </head>
+  <body>
+    <script>
+      var cadenas = ["aabc", "abc", "zdc", "ew"];
+      var numeros = [4, 40, 2, 220, 1, 10];
+      document.write("<br> " + cadenas.sort());
+      document.write("<br> " + numeros.sort() + "<--!!!");
+      document.write(
+        "<br>" +
+          numeros.sort(function (a, b) {
+            return a - b;
+          })
+      );
+    </script>
+
+    <br />
+    <hr />
+    <script>
+      var numeros = [45, 4, 9, 16, 25];
+      function mostrarVector(valor, indice, vector) {
+        document.write("Pos " + indice + " = " + valor + "<br>");
+      }
+      numeros.forEach(mostrarVector);
+    
+      document.write("<hr>");
+      
+      function porDos(valor) {
+        return valor * 2;
+      }
+      var doble = numeros.map(porDos);
+      document.write(doble);
+
+      function filtrar(valor) {
+        return valor > 10;
+      }
+      var filtro = numeros.filter(filtrar);
+      document.write("<br>" + filtro);
+
+      function sumar(total, valor, indice, vector) {
+        return total + valor;
+      }
+
+      var sumatorio = numeros.reduce(sumar);
+      document.write("<br>" + sumatorio);
+
+      function comprobarTodas(valor) {
+        return valor > 10;
+      }
+      document.write("<br>" + numeros.every(comprobarTodas));
+
+      function comprobarAlgunos(valor) {
+        return valor > 10;
+      }
+      document.write("<br />" + numeros.some(comprobarAlgunos));
+      function encontrar(valor) {
+        return valor == 9;
+      }
+      document.write(
+        "<br />" +
+          numeros.find(encontrar) +
+          " pos= " +
+          numeros.findIndex(encontrar)
+      );
+    </script>
+  </body>
+</html>

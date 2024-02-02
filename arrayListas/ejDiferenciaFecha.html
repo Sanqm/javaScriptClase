@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        const date = new Date(); // creamos un variable que almacena la fecha de hoy y ahora.
+        
+        /*Esta función calacula el tiempo transcurrido entre una fecha pasada y la actual */
+      function calcular() {
+        
+        let day =  parseInt(document.getElementById("dia").value); // recogemos valor del input de día 
+        let month = parseInt(document.getElementById("mes").value)-1; // recogemos valor del input de mes 
+        let year = parseInt(document.getElementById("anio").value) ; // recogemos valor del input de año
+        let pastDate = new Date(year, month, day); // creamos la fecha pasada con los valores insertados
+
+        
+      
+        let newtime = date.getMilliseconds() - pastDate.getMilliseconds();  // calculamos el tiempo trancurrido en milisegundos
+        let tDays = Math.floor((newtime/(1000*60*60*24))); // los milisegundos obtenidos se psan a dia
+        let years = Math.floor(tDays/365); // se pasan los dias a años 
+        let months = Math.floor((tDays%365)/30); // con los años sobrantes los pasamos a meses
+        let days =  Math.floor((tDays%365)%30); // con los meses sobranes se pasan a dias 
+        
+        document.write("Tiempo transcurrido: " + years  + ", anios," + months + " meses " + days +" dias  " );
+        
+        
+
+
+        
+      }
+    </script>
+
+    <label for="">Fecha actual:</label>
+    <script>
+     document.write(date);
+    </script>
+    <br /><br />
+    <label for="">Fecha Pasada:</label>
+    <input type="text" id="dia" size="1"/>
+    <input type="text" id="mes"  size="1"/>
+    <input type="text" id="anio" size="2" />
+    <button id="btnEnviar" onclick="calcular()">Enviar</button>
+  </body>
+</html>

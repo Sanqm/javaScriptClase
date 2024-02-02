@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reloj Digital</title>
+    <style>
+        #reloj{
+            font-size: 100px;
+            font-weight: bold;
+        }
+    </style>
+   
+</head>
+<body onload="horaActual()">
+    <div id="divCiudades">
+        <p><input type="radio" id="hMadrid" name="ciudades" value="1" checked >Madrid</p>
+        <p><input type="radio" id="hNewYork" name="ciudades" value="2">New York</p>
+        <p><input type="radio" id="hTokio" name="ciudades" value="3">Tokio</p>
+        <p id="reloj"></p>    
+    </div>
+    
+    <script>
+       /*Esta función dispara el worker que devuelve la hora actual del sistema y en funcion 
+       de la zona horario seleccionada calcula la hora de dicha zona*/
+        
+        function horaActual(){
+            wor = new Worker("hora.js");
+            wor.onmessage = function (event){
+            var op = parseInt(document.querySelector('input[name="ciudades"]:checked').value) ;
+            var hora = event.data.horitas;
+            console.log(op);
+                switch(op){
+                    case 1:
+                    hora = hora;
+                    break;
+                    case 2:
+                    hora -=6;
+                    break;
+                    case 3:
+                    hora+=8;
+                    break;
+                }
+                if(hora >24){
+                hora = hora - 24;
+            }else if(hora<0){
+                hora = hora +24;
+            }
+                document.getElementById("reloj").innerHTML = hora + ":"+ event.data.minutos + ":"+event.data.segundos;
+        }
+    }
+    </script>
+</body>
+<a href=""></a>
+</html>

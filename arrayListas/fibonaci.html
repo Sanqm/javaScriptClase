@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci</title>
+
+    <script>
+        function fibo(num){
+            if(num<=1){
+                return num;
+            }
+            return num * fibo(num-1);
+        };
+
+        function fibo2(num){
+            resl = 0
+            if(num==0){
+                return 0;
+            }
+            if(num==1){
+                return 1;
+            }
+
+            for(i=num; i<=1;i--){
+          
+                aux = (num-1) + (num-2); 
+                res = res + aux; 
+            }
+            return aux +1;
+        };
+    </script>
+
+</head>
+<body>
+    <p id="prueba"></p>
+    <p id="p"></p>
+ 
+<script>
+    document.getElementById("prueba").innerHTML = "El factorial es " + fibo(5);
+    
+ </script>
+ <hr>
+    <script>
+        document.getElementById("p").innerHTML = "Factorial es: " + fibo2(3);
+    </script>   
+        
+   
+</body>
+</html>

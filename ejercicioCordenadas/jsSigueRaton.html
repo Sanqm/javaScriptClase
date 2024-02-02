@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siguiendo ratón</title>
+    <style>
+        body{
+            width: 650px;
+            height:  1000px;
+        }
+    </style>
+    
+</head>
+<body onmousemove="follow(event)">
+    <p id="msg" ></p>
+    <p id="msgS"></p>
+
+
+    <label for="" id="followLb" >Sigueme</label>
+        
+    <script>
+        function follow(e){
+            let xmouse = e.pageX;
+            let ymouse = e.pageY;
+            
+            xmouse = xmouse - 20;
+            ymouse = ymouse - 20;
+            
+            document.getElementById("followLb").style.position= "absolute";
+            // accediendo a la posicion absolota de el elemento 
+            document.getElementById("followLb").style.top = ymouse+"px";
+            document.getElementById("followLb").style.left = xmouse+"px";
+            // dando los nuevos posiciones a la label 
+            
+
+         
+        }
+
+ 
+    </script>
+
+
+
+
+
+</body>
+</html>

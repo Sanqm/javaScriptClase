@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<style>
+    div {
+        width: 500px;
+        height: 500px;
+        border: 5px solid black;
+    }
+</style>
+
+<body onmousemove="cordBody(event); cordScreen(event)">
+    <p id="cordDiv"></p>
+    <p id="cordBody"></p>
+    <p id="cordScreen"></p>
+
+    <div onmousemove="cordDiv(event)"></div>
+
+    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaass</p>
+    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaass</p>
+    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaass</p>
+    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaass</p>
+    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaass</p>
+    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaass</p>
+    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaass</p>
+    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaass</p>
+    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaass</p>
+    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaass</p>
+    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaass</p>
+    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaass</p>
+    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaass</p>
+    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaass</p>
+    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaass</p>
+    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaass</p>
+    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaass</p>
+    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaass</p>
+    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaass</p>
+    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaass</p>
+
+    <script>
+        function cordDiv(e) {
+            x = e.clientX;
+            y = e.clientY;
+            document.getElementById("cordDiv").innerHTML = "Coordenadas Div: (" + x + "," + y + ")";
+        }
+
+        function cordBody(e) {
+            let x = e.pageX;
+            let y = e.pageY;
+            document.getElementById("cordBody").innerHTML = "Coordenadas Body: (" + x + "," + y + ")";
+
+        }
+
+        function cordScreen(e) {
+            let x = e.screenX;
+            let y = e.screenY;
+            document.getElementById("cordScreen").innerHTML = "Coordenadas Screen: (" + x + "," + y + ")";
+        }
+    </script>
+
+</body>
+
+</html>

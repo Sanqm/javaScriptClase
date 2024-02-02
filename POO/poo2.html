@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POO 2 agregando y borrando atributos</title>
+</head>
+<body>
+    <script>
+        var persona = {
+            nombre : "Pepe",
+            apellido : "Perez",
+            id : 123,
+            nombreCompleto : function (){
+                return this.nombre + " " + this.apellido; 
+            }
+        };
+        persona.nacionalidad = "galega" //permite agregar atrinbutos
+        persona.sueldo = function (){
+            return 3.5 * 500;
+        };
+        delete persona.id;  // permite borrar atributos 
+        delete persona.nombreCompleto;
+        for(x in persona){
+            document.write(persona[x] + " ");
+        }
+    </script>
+</body>
+</html>

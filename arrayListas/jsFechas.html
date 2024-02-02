@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manejo de Fechas</title>
+</head>
+<body>
+<script>
+    var d = new Date();
+    document.write(d.getTime());
+    document.write("<br>" + d.getFullYear());
+    document.write("<br>" + parseInt(d.getMonth()+1)) ;
+    document.write("<br>" + d.getMinutes());
+    d.setFullYear(2050); // modificamos el año 
+    document.write("<br>" + d.getFullYear() );
+</script>
+ <p id="time"></p>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Agenda</title>
+
+    <script>
+        var persona = new Array(4);
+        
+        function fsave(){
+            var nombre = document.getElementById("name").value;
+            var edad = document.getElementById("age").value;
+            var email = document.getElementById("mail").value;
+            console.log(nombre);
+            for (let i = 0; i< persona.length; i++) {
+              for (let j = 0; j < persona[i].length; j++) {
+                persona[i][j] = nombre;
+                
+              }
+               
+            }
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Agenda: Introduzca datos personales</legend>
+            <label for="name">Nombre:</label>
+            <input type="text" name="name" id="name">
+            <p></p>
+            <label for="edad">Edad:</label>
+            <input type="number" name="age" id="age">
+            <p></p>
+            <label for="email">Email:</label>
+            <input type="email" name="mail" id="mail">
+            <p></p>
+            <button id="btnSave" onclick="fsave()">Guardar</button>
+        </fieldset>
+    </form>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax Con HTML</title>
+</head>
+<body>
+    <p id="listado"></p>
+    <p id="marcas"></p>
+    <script>
+        var xhttp = new  XMLHttpRequest();
+        var url = "archivoxml.xml";
+        xhttp.open("GET", url, true);
+        xhttp.onreadystatechange = function (){
+            if(this.readyState == 4 && this.status == 200){
+                recuperDatos(this);
+            }
+        };
+        xhttp.send();
+
+        function recuperDatos(xml){
+            var datos = ""; //variable que usamos para almacenar los datos.
+            var xmlDatos = xml.responseXML;
+            arrayEmpresa = xmlDatos.getElementsByTagName("empresa"); //  donde marca es  la etiquita que se quiere 
+
+            for ( i = 0; i < arrayEmpresa.length; i++) {
+                for ( j = 0; j < arrayEmpresa.length; i++) {
+               // datos += "caracteristicas: " + array2[1].children[0].innerHTML 
+              // datos = datos + "atributo: " + array[i].getAttribute("combustible")+ "<br>";
+               //datos2= array[i].children[0].childNodes[0].nodeValue;
+               //console.log(array[0].children[0].children[0].innerHTML);
+               
+           
+            }
+
+            document.getElementById("listado").innerHTML = datos;
+            //document.getElementById("marcas").innerHTML = datos2;
+        }
+    </script>
+</body>
+</html>

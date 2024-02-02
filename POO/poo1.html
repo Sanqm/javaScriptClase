@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos programación orientada a objetos</title>
+</head>
+<body>
+    <script>
+        var persona= {
+            nombre : "Pepe",
+            apellido: "Perez",
+            id : 123,
+            nombreCompleto : function (){
+                return this.nombre + " " + this.apellido;
+            }
+
+        };
+        document.write(persona.nombre);
+        document.write("<br>" + persona["apellido"]);
+        x = "id";
+        document.write("<br>" + persona["id"]);
+        document.write("<br>" + persona.nombreCompleto());
+        document.write("<br>");
+        for(x in persona){
+            document.write(persona[x]+" ");
+        }
+    </script>
+</body>
+</html>

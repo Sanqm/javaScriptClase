@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      
+      
+
+      function contador() {
+        const acDate = new Date(); // que será la fecha actual que es el timer a batir;
+        let compDate = new Date(2024, 9, 26);
+        console.log(compDate);
+        let pasTime = (compDate - acDate)/1000; // dado que el formato 
+        //delas fechas es el mismo podeos hacer la diferencia correctamente
+        let dd   = Math.floor(pasTime / ((( 60 * 60 * 24))));
+        let lfmm =Math.floor(pasTime % ((( 60 * 60 * 24))));
+
+        let hh = Math.floor(lfmm /(60*60)); // 
+        let lfhh = Math.floor(lfmm %(60*60));
+        let mm = Math.floor((lfhh/60)); 
+        let ss = Math.floor(lfhh%60); // 
+     
+        document.getElementById("show").innerHTML =  "Dias " + dd + " horas " + hh +
+      " minutos " + mm   + " segundos " + ss;
+       
+      }
+         
+  
+          </script>
+    <p id="show"></p>
+    <script>timer = setInterval(contador, 1000);</script>
+  </body>
+</html>

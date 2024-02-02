@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones Anónimas</title>
+</head>
+<body>
+    <script>
+        // asignación de una funcion anonima a una variable
+        let f = function (a,b){
+            return a + b;
+
+        };
+        document.write(f(3,1));
+
+        document.write("<br><hr>");
+
+        // ejecucion de una funcion sin ser invocada
+        (function(){
+            a = 5; 
+            document.write("<br>" + a**2)
+        })();
+        document.write("<br><hr>"); 
+
+        //funciones anónimas con parámetros
+        x = 5;
+        y = 10;
+
+        // encapsulación de variables 
+
+        z = (function (x,y){return x + y} (1,2));
+        document.write("<br>" + z);
+
+    </script>
+</body>
+</html>

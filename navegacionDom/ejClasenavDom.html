@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio clase</title>
+</head>
+<body>
+    <p id="p1">Hola</p>
+    <div id="div1">
+        <label for="id1">Imagen</label>
+        <br>
+        <img id="id1"  src="gatito.jpg" alt="gatito" height="100" width="200">
+        <br>
+        <label for="">otra label</label>
+    </div>
+    <footer id="piePag">Datos de  <strong>contacto</strong></footer>
+
+    <script>
+        var parrafo = document.getElementById("p1");
+        var contenedor = document.getElementById("div1");
+        var pie = document.getElementById("piePag");
+        var arNodos =  contenedor.children;
+        var arTipos;
+        var txt = ""; var txt2= "";
+        for (let i = 0; i < arNodos.length; i++) {
+            txt = txt + arNodos[i].nodeName.toLocaleLowerCase()+ " ";
+            
+            
+        }
+        document.write(" <hr>Elementos dentro del contendor " + txt + "; ");
+        
+
+        for (let i = 0; i < arNodos.length; i++) {
+           txt2 = txt2 +  "<br>" + arNodos[i].nodeType + ";";
+            
+            
+
+            
+        }
+
+        document.write("Cantidad de nodos tipo 3: " + txt2)
+ 
+
+    
+    </script>
+
+
+</body>
+</html>

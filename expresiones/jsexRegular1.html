@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expresiones Regulares</title>
+</head>
+<body>
+    <script>
+        var txt = "En un lugar de la mancha... ";
+        document.write(txt.search("de"));
+        document.write("<br>" + txt.replace("de", "DE"));
+        document.write("<br>" + txt.search(/e la/i));
+        document.write("<br>" + txt.replace(/e la/i, "E LA"));
+        document.write("<br>" + txt.match(/lu+/i)); 
+        // los elementos devueltos los mete en un array 
+        document.write("<br>" + (/lu+/i).test(txt));
+        var patron = /lu+/i;
+        document.write("<br>" + patron.exec(txt));
+
+    </script>
+</body>
+</html>

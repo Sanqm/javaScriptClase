@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sigue la Rana</title>
+    <style>
+      div {
+        border: 2px solid black;
+        height: 1000px;
+      }
+      img {
+        position: absolute;
+        top: 50px;
+        left: 100px;
+      }
+    </style>
+  </head>
+  <body onkeydown="moveBox()">
+    <div id="contenedor">
+      <img
+        id="imgrana"
+        src="rana.jpg"
+        alt="Rana"
+        title="Rana"
+        height="50"
+        width="50"
+        onmouseenter="followR()"
+        style="z-index: 1"
+      />
+    </div>
+
+    <script>
+      let cont = 0; // variable que cuenta cuantas veces se movió el ratón
+      let x = 0; // cordena x de la rana
+      let y = 0; // cordenada y de la rana
+      var caja = ""; // almacena el elemento caja cuando se genere
+      let salioCaja = false; // booleano que controla si salio la caja
+      let xc = ""; // variable que almacena la cordena x de la caja
+      let yc = ""; //  variable qu almacena la cordenada y de la caja
+
+      /*Está función moverá la rana por el marco de juego cuando se clickea en la misma   y creará la caja que posteriormente la atrapará*/
+      function followR() {
+        x = Math.floor(Math.random() * (450 - 10) + 10); // genara la posición x de la rana basandose en un random
+        y = Math.floor(Math.random() * (200 - 10) + 10); // genara la posición y de la rana basandose en un random
+
+        document.getElementById("imgrana").style.top = y + "px"; // asignamos las nuevas posiciones a la rana
+        document.getElementById("imgrana").style.left = x + "px";
+        cont++; // aumentamos el contador en función de los movimientos de la rana
+
+        if (cont == 3) {
+          // cuando llegue a 3 creamos la caja
+          elDiv = document.getElementById("contenedor"); // almacenamos el div el contenedor del juego
+          caja = document.createElement("img"); // creamos el un elemento de tipo imagen y lo almacenamos
+          caja.setAttribute("id", "imgcaja"); // modificamos atributo id para darle un nombree
+          caja.setAttribute("src", "caja.jpg"); // modificamos atributo src para indicarle la fuente de a imagen
+          caja.style.width = 400 + "px"; // damos dimesiones a la imagen
+          caja.style.height = 400 + "px";
+          caja.style.left = 400 + "px"; // posicionamos la caja
+          caja.style.top = 400 + "px";
+          elDiv.appendChild(caja); // metemos en el marco de juego el elemento caja creado
+          salioCaja = true; // modicamos la variable que que controla si se ha generado la caja
+          caja.addEventListener("click", fclicarCaja); // creamos el evento que escuchará si se hace click sobre la caja
+        
+        }
+
+        fcazar(); // llamamos a la función que controla si la rana entra en la caja
+      }
+
+      /*Esta  funión moverá la caja cuando se presiones ciertas teclas  */
+      function moveBox() {
+        let k = event.key; // creamos el evento que escuchará las teclas
+       // xc = caja.getBoundingClientRect().left; // con getBoundingClienteRect obtenemos las posiciones que deseamos de la caja
+       // yc = caja.getBoundingClientRect().top;
+
+        // dependiendo de la tecla seleccionada
+        switch (k) {
+          case "a":
+            xc = xc - 10; // con un margen previamente establecido reasignamos los valores de la cordena x de la caja
+            document.getElementById("imgcaja").style.left = xc + "px";
+
+            break;
+          case "d":
+            xc = xc + 10;
+            document.getElementById("imgcaja").style.left = xc + "px";
+
+            break;
+          case "w":
+            yc = yc - 10; // con un margen previamente establecido reasignamos los valores de la cordena y de la caja
+            document.getElementById("imgcaja").style.top = yc + "px";
+            break;
+          case "s":
+            yc = yc + 10;
+            document.getElementById("imgcaja").style.top = yc + "px";
+            break;
+        }
+        /* utilizamos solo los ejes left y top  y no empelamos bottom ni right ya que para moverse la caja solo necesita deshacer el camino andado 
+         y eso lo conseguimos simplemente moviendonos en el mismo eje pero de manera negativa*/
+      }
+
+      /*Esta función controla si se acaba el juego, que se producirá cuando a rana entre el la caja */
+      function fcazar() {
+        /*dado que se ha jugado con la proporciones de la caja y la rana solo es necesario controlar los putnos superiores de x e y en ambas imagens
+        en mi caso dado que asigno valores especificos a las cordenads de la caja cuando se genera la misma y antes de moverse, he de controlar 
+        que para que el juego funcione no tenga esos valores ya que estaríamos ganando todo el tiempo
+        */
+        if (salioCaja && xc != "" && xc != 0) {
+          if (x >= xc && y >= yc) {
+            alert("Ganaste"); // emitemos a larta indicando que ganamos el juego
+          }
+        }
+      }
+     
+      /*Esta función redimensiona la caja si se hace click sobre la misma */
+      function fclicarCaja() {
+        // creamos dos variables que almacenarán los valores actuales del ancho y alto
+        let w = parseInt(caja.style.width);
+        let h = parseInt(caja.style.height);
+        // actualizamos valores
+        w = w * 2;
+        h = h * 2;
+
+        // reasignamos valores
+        caja.style.width = w + "px";
+        caja.style.height = h + "px";
+      }
+     
+    </script>
+  </body>
+</html>

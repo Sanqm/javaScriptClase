@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participantes</title>
+    <script>
+        function muestraParticipantes(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status ==200){
+                    document.getElementById("txtParticipantes").innerText = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "http://localhost:80/Participantes/getParticipantes.php?param=", true);
+            xmlhttp.send();
+        }
+    </script>
+</head>
+<body>
+    <h1>Participantes:</h1>
+    <textarea name="txtParticipantes" id="" cols="30" rows="10"></textarea>
+    <script> setTimeout(muestraParticipantes(),10000) ; </script>
+</body>
+</html>

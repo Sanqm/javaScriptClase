@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <form action="">
+            <fieldset>
+              <legend>Cálculo de la Ley de Ohm</legend>
+              <p><label for="">V=I*R ==> P=I*V</label></p>
+              <p>
+                <label for="txtVoltaje">Voltaje: </label>
+                <input type="text" id="txtVoltaje" name="txtVoltaje" />
+                <button id="btnVoltaje" onclick="var vol = document.getElementById('txtVoltaje').value" >Enviar</button>
+              </p>
+              <p>
+                <label for="">Intensidad</label>
+                <input type="text" id="txtIntensisdad" readonly />
+              </p>
+              <p>
+                <label for="">Resistencia</label>
+                <input type="text" id="txtResistencia" name="txtResistencia" />
+                <button
+                  id="btnResistencia"
+                  name="btnResisitencia"
+                  onclick=""
+                >
+                  Enviar
+                </button>
+              </p>
+            </fieldset>
+          </form>
+        </td>
+        <td>
+          <fieldset>
+            <legend>Resultado</legend>
+            <p>
+              <label for="">Potencia</label>
+              <input type="text" id="txtPotecia" name="txtPotencia" readonly />
+            </p>
+          </fieldset>
+        </td>
+      </tr>
+    </table>
+    <p id="error"></p>
+  </body>
+  <script>
+    /*
+    function validarVol() {
+      var vol = parseFloat(document.getElementById("txtVoltaje").value);
+      try {
+        if (vol == "") throw "Vacio";
+        if (isNaN(vol)) throw "El voltaje no es un número";
+        console.log(vol);
+        return vol;
+      } catch (e) {
+        alert(e);
+      }
+    }
+
+    function validarRes() {
+      var res = parseFloat(document.getElementById("txtResistencia").value);
+      try {
+        if (isNaN(res)) throw "La resistencia introducida no es un número";
+        if (res <= 0)
+          throw "El valor introducido no es válido para una resistencia";
+        return res;
+      } catch (e) {
+        alert(e);
+      }
+    }*/
+    
+    
+    function calcularPotencia() {
+      var vol = parseFloat (document.getElementById("txtVoltaje").value);
+      console.log(vol);
+      var res = parseFloat(document.getElementById("txtResistencia").value);
+      console.log(res);
+    
+     
+      try {
+        if (isNaN(vol) || isNaN(res))
+          throw "Algunos de los valores introducidos no es un número";
+        if (vol == "" || res == "")
+          throw "Algunos de los elementos no ha sido introducido";
+
+        inten = vol / res;
+        console.log(inten);
+        document.getElementById("txtIntensisdad").innerText = inten;
+        pot = inten * vol;
+        console.log(pot);
+        document.getElementById("txtPotencia").innerText  = pot;
+      } catch (e) {
+        alert(e);
+      }
+    }
+  </script>
+  
+</html>

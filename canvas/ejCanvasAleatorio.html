@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: solid 2px black;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="800" height="600"></canvas>
+    <script>
+        const MIN = 2;
+        const MAX = 20;
+
+        /*Función que genera el número de líneas de manera aleatoria
+        entre un mínimo y un máximo de lineas previamente establecidas*/
+        function ladosR() {
+            return Math.floor(Math.random() * (MAX - MIN) + MIN);
+            // calculamos random y lo devolvemos 
+        }
+        /*función que dibuja tanteas lineas */
+        function puntosR() {
+            var lados = ladosR(); /* almacena lo devulto por la función 
+            random */
+            const c = document.getElementById("myCanvas");
+            //almacenamos en una constante el canvas para trabajar con él
+            if (c.getContext) {
+                // si se soporta canvas
+                const ctx = c.getContext("2d");
+                ctx.beginPath(); // creamos punto inicio 
+                ctx.moveTo(150, 150); // especificamos en qeu cordenadas se crea
+                
+                for (let i = 0; i <= lados; i++) {
+                    // para el número de lados random generamos cordenadas random
+                
+                    var x = Math.floor(Math.random() * (800 - 50) +50);
+                    var y = Math.floor(Math.random() * (600 - 50) +50);
+                    ctx.lineTo(x, y);   // dibujamos segun las mismas
+                }
+                ctx.closePath(); // cerramos el camino para que se unan 
+                ctx.stroke(); // dibujamos
+               
+            }
+        }
+        puntosR(); // llamamos a la función con nuestro código
+    </script>
+</body>
+
+</html>
